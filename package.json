@@ -1,0 +1,92 @@
+{
+  "name": "vscode-spade-lsp",
+  "displayName": "Spade LSP",
+  "description": "Language server client for the Spade HDL (diagnostics, go-to-definition, hover, and more) via `swim lsp`.",
+  "version": "0.1.0",
+  "publisher": "Mechazawa",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mechazawa/vscode-spade-lsp.git"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "spade",
+    "hdl",
+    "fpga",
+    "lsp"
+  ],
+  "activationEvents": [
+    "onLanguage:spade",
+    "workspaceContains:**/swim.toml"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "spade",
+        "aliases": [
+          "Spade"
+        ],
+        "extensions": [
+          ".spade"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "spade-lsp.restartServer",
+        "title": "Spade: Restart Language Server"
+      }
+    ],
+    "configuration": {
+      "title": "Spade LSP",
+      "properties": {
+        "spade-lsp.serverCommand": {
+          "type": "string",
+          "default": "swim",
+          "description": "Executable used to launch the Spade language server. Defaults to `swim` (invoked as `swim lsp`, which sets up the toolchain environment). Set to `spade-language-server` to run the server binary directly."
+        },
+        "spade-lsp.serverArgs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "lsp"
+          ],
+          "description": "Arguments passed to `spade-lsp.serverCommand`. For the `swim` default this must be `[\"lsp\"]`. For `spade-language-server` set this to `[]`."
+        },
+        "spade-lsp.trace.server": {
+          "type": "string",
+          "enum": [
+            "off",
+            "messages",
+            "verbose"
+          ],
+          "default": "off",
+          "description": "Trace the JSON-RPC traffic between VSCode and the Spade language server (for debugging)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.75.0",
+    "typescript": "^5.4.0"
+  }
+}
