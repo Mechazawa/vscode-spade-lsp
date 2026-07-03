@@ -28,7 +28,31 @@ cargo install --git https://gitlab.com/spade-lang/spade spade-language-server
 
 ## Install
 
-From a packaged `.vsix`:
+### VS Code (Marketplace)
+
+Open the Extensions view (`Ctrl+Shift+X`), search for **Spade LSP**, and click
+Install. Or from the command line:
+
+```bash
+code --install-extension Mechazawa.vscode-spade-lsp
+```
+
+Marketplace listing: <https://marketplace.visualstudio.com/items?itemName=Mechazawa.vscode-spade-lsp>
+
+### VSCodium / code-oss (Open VSX)
+
+These builds use the Open VSX registry instead of the Microsoft Marketplace:
+
+```bash
+codium --install-extension Mechazawa.vscode-spade-lsp
+```
+
+Open VSX listing: <https://open-vsx.org/extension/Mechazawa/vscode-spade-lsp>
+
+### From a packaged `.vsix`
+
+Grab the `.vsix` from the [latest release](https://github.com/Mechazawa/vscode-spade-lsp/releases),
+or build it yourself:
 
 ```bash
 git clone https://github.com/Mechazawa/vscode-spade-lsp
