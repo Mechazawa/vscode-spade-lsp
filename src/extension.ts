@@ -3,7 +3,6 @@ import {
   LanguageClient,
   LanguageClientOptions,
   ServerOptions,
-  TransportKind,
 } from "vscode-languageclient/node";
 
 let client: LanguageClient | undefined;
@@ -50,9 +49,12 @@ function start(output: vscode.OutputChannel): void {
       (cwd ? ` (cwd: ${cwd})` : ""),
   );
 
+  // Note: do not set `transport`. The client communicates over the child's
+  // stdio by default; setting `transport: TransportKind.stdio` explicitly makes
+  // vscode-languageclient append a `--stdio` argument, which `swim lsp` rejects.
   const serverOptions: ServerOptions = {
-    run: { command, args, transport: TransportKind.stdio, options: { cwd } },
-    debug: { command, args, transport: TransportKind.stdio, options: { cwd } },
+    run: { command, args, options: { cwd } },
+    debug: { command, args, options: { cwd } },
   };
 
   const clientOptions: LanguageClientOptions = {
