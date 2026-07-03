@@ -37,8 +37,6 @@ Install. Or from the command line:
 code --install-extension Mechazawa.vscode-spade-lsp
 ```
 
-Marketplace listing: <https://marketplace.visualstudio.com/items?itemName=Mechazawa.vscode-spade-lsp>
-
 ### VSCodium / code-oss (Open VSX)
 
 These builds use the Open VSX registry instead of the Microsoft Marketplace:
