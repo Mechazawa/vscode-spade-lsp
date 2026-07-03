@@ -2,7 +2,7 @@
   "name": "vscode-spade-lsp",
   "displayName": "Spade LSP",
   "description": "Language server client for the Spade HDL (diagnostics, go-to-definition, hover, and more) via `swim lsp`.",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "publisher": "Mechazawa",
   "license": "MIT",
   "repository": {
